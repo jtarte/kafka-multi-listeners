@@ -1,0 +1,12 @@
+apiVersion: eventstreams.ibm.com/v1beta2
+kind: KafkaTopic
+metadata:
+  labels:
+    eventstreams.ibm.com/cluster: myes
+  name: my-topic-intranet
+  namespace: cp4i
+spec:
+  config: {}
+  partitions: 1
+  replicas: 3
+  topicName: my-topic-intranet

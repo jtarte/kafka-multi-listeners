@@ -1,0 +1,62 @@
+apiVersion: eventstreams.ibm.com/v1beta2
+kind: KafkaUser
+metadata:
+  labels:
+    eventstreams.ibm.com/cluster: my-es
+  name: my-user-intranet
+  namespace: cp4i
+spec:
+  authentication:
+    type: scram-sha-512
+    password:
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: my-user-intranet
+  authorization:
+    acls:
+      - host: '*'
+        operation: Read
+        resource:
+          name: my-topic-intranet
+          patternType: literal
+          type: topic
+      - host: '*'
+        operation: Describe
+        resource:
+          name: my-topic-intranet
+          patternType: literal
+          type: topic
+      - host: '*'
+        operation: Read
+        resource:
+          name: my-group-intranet
+          patternType: literal
+          type: group
+      - host: '*'
+        operation: Write
+        resource:
+          name: my-topic-intranet
+          patternType: literal
+          type: topic
+      - host: '*'
+        operation: Create
+        resource:
+          name: my-topic-intranet
+          patternType: literal
+          type: topic
+      - host: '*'
+        operation: Describe
+        resource:
+          name: my-topic-intranet
+          patternType: literal
+          type: topic
+    type: simple
+--- 
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-user-intranet
+  namespace: cp4i 
+stringData:
+  password: passw0rd

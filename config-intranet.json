@@ -1,0 +1,15 @@
+{
+    "bootstrap.servers": ["myes-kafka-intranet-bootstrap-cp4i.jt-openshift-f54dfdb602b48210069b59bca45066bc-0000.eu-de.containers.appdomain.cloud:443"],
+    "security.protocol": "SASL_SSL",
+    "sasl.mechanisms":"SCRAM-SHA-512",
+    "sasl.username":"my-user-intranet",
+    "sasl.password":"passw0rd",
+    "ssl.ca.location":"/Users/jtarte/dev/kafka-multi-listeners/ca.crt",
+    "api.version.request": true,
+    "log.connection.close" : false,
+    "group.id": "intranet-consumer",
+    "topic": "my-topic-intranet",
+    "offset": "latest",
+    "auto.commit": "false"
+
+}
